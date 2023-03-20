@@ -78,4 +78,13 @@ class PostController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+    {
+        // search the column body '%' '%' trim the keyword(the name in the search field) form both sides
+        $posts = $this->post::where('body', 'LIKE', '%' . $request->keyword . '%')->with('user')->approved()->paginate(10); // with('user') associated the user data with the post // approved using model scope in the post model scopeApproved() function name is Approved scope is to use model scope
+        $title = __('نتائج البحث عن:' . $request->keyword);
+
+        return view('index', compact('posts', 'title'));
+    }
 }

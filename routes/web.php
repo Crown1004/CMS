@@ -26,3 +26,4 @@ Route::middleware([
 
 Route::get('/', [PostController::class, 'index']);
 Route::resource('/post', PostController::class);
+Route::post('/search', [PostController::class , 'search'])->name('search');

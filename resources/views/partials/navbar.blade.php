@@ -42,10 +42,9 @@
 
                 <!-- Search Box -->
                 <li>
-                    <form class="d-flex" method="post" action="#">
+                    <form class="d-flex" method="post" action="{{route('search')}}">
                         @csrf
-                        <input class="form-control ms-2" name="keyword" type="search" placeholder="ابحث عن منشور..."
-                            aria-label="Search">
+                        <input class="form-control ms-2" name="keyword" type="search" placeholder="ابحث عن منشور..." aria-label="Search">
                         <button class="btn btn-outline-light" type="submit">ابحث</button>
                     </form>
                 </li>
