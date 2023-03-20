@@ -23,4 +23,10 @@ class Post extends Model
     {
         return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id'); // where the parent_id = null witch means that is the main comment else it is a reply
     }
+
+    // function name is Approved scope is to use model scope
+    public function scopeApproved($query)
+    {
+        return $query->whereApproved(1)->latest(); // return only approved posts
+    }
 }
