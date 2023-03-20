@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PostController::class, 'index']);
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -25,3 +23,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/', [PostController::class, 'index']);
+Route::resource('/post', PostController::class);

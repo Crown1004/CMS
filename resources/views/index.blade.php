@@ -32,7 +32,7 @@
                                         class="text-secondary">{{ $post->comments->count() }} {{ __('تعليقات') }}</span>
                                 </div>
                             </div>
-                            <h4 class="my-2 h4"><a href="#">{{ $post->title }}</a></h4>
+                            <h4 class="my-2 h4"><a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a></h4>
                             <p class="card-text mb-2">{!! Str::limit($post->body, 200) !!}</p>
                         </div>
                     </div>
@@ -40,9 +40,7 @@
             </div>
         @endforeach
         <!-- Pagination -->
-        <ul class="pagination justify-content-center mb-4">
-            {{ $posts->links() }}
-        </ul>
+        {{ $posts->links() }}
     </div>
     @include('partials.sidebar')
 @endsection
