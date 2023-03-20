@@ -20,6 +20,9 @@
     </style>
 
     @yield('style')
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 
 <body dir="rtl" style="text-align: right">

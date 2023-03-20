@@ -5,7 +5,7 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="visibility: visible">
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                 <li class="nav-item me-5">
                     <a class="nav-link active" aria-current="page" href="{{ url('/') }}">الصفحة الرئيسية</a>
