@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Controllers\viewComposers\CategoryComposer;
+use App\Http\Controllers\viewComposers\RoleComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,5 +23,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer(['partials.sidebar', 'lists.categories'], CategoryComposer::class); // to link the database with the view
+
+        View::composer('lists.roles', RoleComposer::class);
     }
 }
