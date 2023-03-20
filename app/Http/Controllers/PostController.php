@@ -2,16 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    protected $post;
+
+    public function __construct(Post $post)
+    {
+        $this->post = $post;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        // get all the posts
+        $posts = $this->post::with('user:id,name,profile_photo_path')->latest()->get(); // user: is the relation user() in the post model
+        $title = __('جميع المنشورات');
+
+        return view('index', compact('posts', 'title'));
     }
 
     /**
