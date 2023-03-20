@@ -36,7 +36,7 @@
             <ul class="navbar-nav mx-auto">
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-plus fa-fw"></i>موضوع جديد</a>
+                        <a class="nav-link" href="{{route('post.create')}}"><i class="fa fa-plus fa-fw"></i>موضوع جديد</a>
                     </li>
                 @endauth
 

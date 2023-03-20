@@ -19,11 +19,9 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/', [PostController::class, 'index']);
 });
 
-Route::get('/', [PostController::class, 'index']);
+// Route::get('/', [PostController::class, 'index']);
 Route::resource('/post', PostController::class);
-Route::post('/search', [PostController::class , 'search'])->name('search');
+Route::post('/search', [PostController::class, 'search'])->name('search');
