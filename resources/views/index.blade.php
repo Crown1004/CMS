@@ -15,7 +15,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-                            <img style="float:right" src="{{ $post->user->profile_photo_url }}" width="50px" class="rounded-full" />
+                            <img style="float:right" src="{{ $post->user->profile_photo_url }}" width="50px"
+                                class="rounded-full" />
                             <p class="mt-2 me-3" style="display:inline-block;"><strong>{{ $post->user->name }}</strong></p>
                             <div class="row mt-2">
                                 <div class="col-3">
@@ -38,7 +39,10 @@
                 </div>
             </div>
         @endforeach
-
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+            {{ $posts->links() }}
+        </ul>
     </div>
     @include('partials.sidebar')
 @endsection

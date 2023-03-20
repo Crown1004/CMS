@@ -21,7 +21,7 @@ class PostController extends Controller
     public function index()
     {
         // get all the posts
-        $posts = $this->post::with('user:id,name,profile_photo_path')->latest()->get(); // user: is the relation user() in the post model
+        $posts = $this->post::with('user:id,name,profile_photo_path')->latest()->paginate(2); // user: is the relation user() in the post model
         $title = __('جميع المنشورات');
 
         return view('index', compact('posts', 'title'));
