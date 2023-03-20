@@ -21,6 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('partials.sidebar', CategoryComposer::class); // to link the database with the view
+        View::composer(['partials.sidebar', 'lists.categories'], CategoryComposer::class); // to link the database with the view
     }
 }
