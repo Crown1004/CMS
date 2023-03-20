@@ -50,10 +50,10 @@ class PostController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $file_new_name = time() . $file->getClientOriginalName(); // save the image with time . original name
-            $file->storeAs('public/images' , $file_new_name);
+            $file->storeAs('public/images', $file_new_name);
         }
 
-        $request->user()->posts()->create($request->all() + ['image_path' => $file_new_name ?? 'default.jpg']);
+        $request->user()->posts()->create($request->all() + ['image_path'=> $file_new_name ?? 'default.jpg']);
 
         return back()->with('success', __('تم إضافة المنشور بنجاح، سيظهر بعد أن يوافق عليه المسؤول'));
     }
@@ -61,10 +61,10 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
         // $post = $this->post::find($id);
-        $post = $this->post::where('id', $id)->first();
+        $post = $this->post::where('slug', $slug)->first();
 
         return view('posts.show', compact('post'));
     }
