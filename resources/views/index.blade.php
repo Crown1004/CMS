@@ -24,8 +24,12 @@
                                         class="text-secondary">{{ $post->created_at->diffForHumans() }}</span>
                                 </div>
                                 <div class="col-3">
-                                    <i class="fa-solid fa-align-justify"></i> <span
-                                        class="text-secondary">{{ $post->category->title }}</span>
+                                    <a href="{{ route('category', [$post->category->id, $post->category->title]) }}"><i
+                                            class="fa-solid fa-align-justify"></i>
+                                        <span class="text-secondary">
+                                            {{ $post->category->title }}
+                                        </span>
+                                    </a>
                                 </div>
                                 <div class="col-3">
                                     <i class="fa-solid fa-comment"></i> <span

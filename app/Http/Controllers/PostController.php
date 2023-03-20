@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -53,7 +54,7 @@ class PostController extends Controller
             $file->storeAs('public/images', $file_new_name);
         }
 
-        $request->user()->posts()->create($request->all() + ['image_path'=> $file_new_name ?? 'default.jpg']);
+        $request->user()->posts()->create($request->all() + ['image_path' => $file_new_name ?? 'default.jpg']);
 
         return back()->with('success', __('تم إضافة المنشور بنجاح، سيظهر بعد أن يوافق عليه المسؤول'));
     }
@@ -98,6 +99,15 @@ class PostController extends Controller
         // search the column body '%' '%' trim the keyword(the name in the search field) form both sides
         $posts = $this->post::where('body', 'LIKE', '%' . $request->keyword . '%')->with('user')->approved()->paginate(10); // with('user') associated the user data with the post // approved using model scope in the post model scopeApproved() function name is Approved scope is to use model scope
         $title = __('نتائج البحث عن: ' . $request->keyword);
+
+        return view('index', compact('posts', 'title'));
+    }
+
+    public function getByCategory($id)
+    {
+        // whereCategory_id where('category_id' , id)
+        $posts = $this->post::with('user')->whereCategory_id($id)->approved()->paginate(10); // user is the relation user() in the post model to get the post user information
+        $title = 'المنشورات العائدة للتصنيف: ' . Category::find($id)->title;
 
         return view('index', compact('posts', 'title'));
     }
