@@ -65,6 +65,11 @@
                 </div>
             @endauth
 
+            <div id="comments" class="p-0 word-break container mt-5">
+                <h4 class="mb-5">{{ __('التعليقات') }}</h4>
+                @include('comments.all', [ 'comments' => $comments, 'post_id' => $post->id])
+            </div>
+
         </div>
     </div>
     @include('partials.sidebar')

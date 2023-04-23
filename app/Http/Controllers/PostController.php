@@ -66,8 +66,9 @@ class PostController extends Controller
     {
         // $post = $this->post::find($id);
         $post = $this->post::where('slug', $slug)->first();
+        $comments = $post->comments->sortByDesc('created_at');
 
-        return view('posts.show', compact('post'));
+        return view('posts.show', compact('post' ,'comments'));
     }
 
     /**
