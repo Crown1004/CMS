@@ -2,10 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+
+    public $comment;
+
+    public function __construct(Comment $comment)
+    {
+        $this->comment = $comment;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -27,7 +37,19 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request , [
+            'body' => 'required',
+        ]);
+
+        $comment = $this->comment;
+        $comment->body = $request->get('body');
+        $comment->post_id= $request->get('post_id'); // send from the hidden input
+        $comment->user()->associate($request->user()); // to link the comment with the user using associate as i used morph many relation
+        $post = Post::find($request->get('post_id'));
+
+        $post->comments()->save($comment);
+
+        return back()->with('success' , 'تم إضافة التعليق بنجاح');
     }
 
     /**
