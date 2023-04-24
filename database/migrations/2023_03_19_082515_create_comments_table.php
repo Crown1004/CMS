@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('post_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->integer('parent_id')->unsigned()->nullable(); // for replies
-            $table->integer('commentable_id')->unsigned()->nullable();
-            $table->string('commentable_type')->nullable();
+            $table->integer('commentable_id')->unsigned()->nullable(); // is post id
+            $table->string('commentable_type')->nullable(); // the model name
             $table->timestamps();
         });
     }

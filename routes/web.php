@@ -29,3 +29,4 @@ Route::post('/search', [PostController::class, 'search'])->name('search');
 Route::get('/category/{id}/{slug}', [PostController::class, 'getByCategory'])->name('category');
 
 Route::resource('/comment', CommentController::class);
+Route::post('/reply/store' , [CommentController::class , 'replyStore'])->name('reply.add');

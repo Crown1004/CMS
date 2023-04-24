@@ -98,7 +98,9 @@
     <script src="https://kit.fontawesome.com/c49981de61.js" crossorigin="anonymous"></script>
     {{-- CKEditor --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
-
+    {{-- jquery --}}
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+        crossorigin="anonymous"></script>
     @yield('script')
 </body>
 

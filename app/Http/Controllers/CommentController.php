@@ -52,6 +52,24 @@ class CommentController extends Controller
         return back()->with('success' , 'تم إضافة التعليق بنجاح');
     }
 
+    public function replyStore(Request $request)
+    {
+        $this->validate($request , [
+            'comment_body' => 'required',
+        ]);
+
+        $reply = new Comment();
+        $reply->body = $request->get('comment_body');
+        $reply->post_id = $request->get('post_id');
+        $reply->parent_id = $request->get('comment_id'); // comment id that i replied on
+        $reply->user()->associate($request->user()); // to link the reply with the user using associate as i used morph many relation
+        $post = Post::find($request->get('post_id'));
+
+        $post->comments()->save($reply);
+
+        return back()->with('success' , 'تم إضافة الرد بنجاح');
+    }
+
     /**
      * Display the specified resource.
      */
