@@ -18,6 +18,6 @@ class RoleComposer extends Controller
 
     public function compose(View $view) // executed automaticly
     {
-        $view->with('roles', $this->roles->all()); // send categories to the passed view partials.sidebar in the AppServiceProvider.php
+        return $view->with('roles', $this->roles->all()); // send categories to the passed view partials.sidebar in the AppServiceProvider.php
     }
 }
