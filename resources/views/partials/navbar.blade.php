@@ -7,19 +7,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent" style="visibility: visible">
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                <li class="nav-item me-5">
+                <li class="nav-item me-5" style="list-style: none">
                     <a class="nav-link active" aria-current="page" href="{{ url('/') }}">الصفحة الرئيسية</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" style="list-style: none">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         الصفحات
                     </a>
 
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" style="list-style: none">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        {{__('Dropdown')}}
+                        {{ __('Dropdown') }}
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Action</a></li>
@@ -35,22 +35,68 @@
 
             <ul class="navbar-nav mx-auto">
                 @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('post.create')}}"><i class="fa fa-plus fa-fw"></i>موضوع جديد</a>
+                    <li class="nav-item" style="list-style: none">
+                        <a class="nav-link" href="{{ route('post.create') }}"><i class="fa fa-plus fa-fw"></i>موضوع جديد</a>
                     </li>
                 @endauth
 
                 <!-- Search Box -->
-                <li>
-                    <form class="d-flex" method="post" action="{{route('search')}}">
+                <li style="list-style: none">
+                    <form class="d-flex" method="post" action="{{ route('search') }}">
                         @csrf
-                        <input class="form-control ms-2" name="keyword" type="search" placeholder="ابحث عن منشور..." aria-label="Search">
+                        <input class="form-control ms-2" name="keyword" type="search" placeholder="ابحث عن منشور..."
+                            aria-label="Search">
                         <button class="btn btn-outline-light" type="submit">ابحث</button>
                     </form>
                 </li>
             </ul>
 
             <ul class="navbar-nav mr-auto">
+                <!-- Notifications -->
+                <div class="topbar" style="z-index:1">
+                    @auth
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow alert-dropdown mx-1" style="list-style: none">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw fa-lg"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter notif-count" data-count="0">0</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right text-right mt-2 mr-auto"
+                                aria-labelledby="alertsDropdown">
+                                <div class="alert-body">
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="ml-3">
+                                            <div class="icon-circle bg-primary">
+                                                <i class="fas fa-file-alt text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="small text-gray-500">منذ 5 دقائق</div>
+                                            <span>Ahmad hasan وضع تعليقًا على المنشور <b>دردشة حول تعلم البرمجة</b></span>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="ml-3">
+                                            <div class="icon-circle bg-primary">
+                                                <i class="fas fa-file-alt text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="small text-gray-500">منذ 5 دقائق</div>
+                                            <span>Ahmad hasan وضع تعليقًا على المنشور <b>دردشة حول تعلم البرمجة</b></span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">عرض جميع
+                                    الإشعارات</a>
+                            </div>
+                        </li>
+                    @endauth
+                </div>
+
                 @guest
                     <li class="nav-item my-auto">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('تسجيل الدخول') }}</a>
@@ -60,7 +106,7 @@
                         <a class="nav-link" href="{{ route('register') }}">{{ __('إنشاء حساب') }}</a>
                     </li>
                 @else
-                    <li class="nav-item dropdown justify-content-left my-auto">
+                    <li class="nav-item dropdown justify-content-left my-auto" style="list-style: none">
                         <a id="navbarDropdown" class="nav-link" href="#" data-bs-toggle="dropdown">
                             <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
                                 alt="{{ Auth::user()->name }}" />
@@ -81,8 +127,7 @@
                                     </x-responsive-nav-link>
 
                                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                                        <x-responsive-nav-link href="{{ route('api-tokens.index') }}"
-                                            :active="request()->routeIs('api-tokens.index')">
+                                        <x-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                                             {{ __('API Tokens') }}
                                         </x-responsive-nav-link>
                                     @endif
