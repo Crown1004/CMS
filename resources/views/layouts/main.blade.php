@@ -121,7 +121,7 @@
 
     <script src="{!! asset('theme/js/sb-admin-2.min.js') !!}"></script>
 
-    {{--  --}}
+    {{-- show real time notifications --}}
     <script type="module">
         @if(Auth::check())
             var post_userId = {{Auth::user()->id}};
@@ -150,6 +150,54 @@
                 notificationsWrapper.show();
             });
         @endif
+    </script>
+
+    {{-- show notifications form database --}}
+    <script>
+        var token = '{{ Session::token() }}';
+        var urlNotify = '{{ route('notification') }}';
+        $('#alertsDropdown').on('click', function(event) {
+            event.preventDefault();
+            var notificationsWrapper = $('.alert-dropdown');
+            var notificationsToggle = notificationsWrapper.find('a[data-bs-toggle]');
+            var notificationsCountElem = notificationsToggle.find('span[data-count]');
+
+            notificationsCount = 0;
+            notificationsCountElem.attr('data-count', notificationsCount);
+            notificationsWrapper.find('.notif-count').text(notificationsCount);
+            notificationsWrapper.show();
+            $.ajax({
+                method: 'POST',
+                url: urlNotify, // send to this route
+                data: {
+                    _token: token
+                },
+                success: function(data) {
+                    var responseNotifications = "";
+                    $.each(data.someNotifications, function(i, item) {
+                        var post_slug = "{{ route('post.show', ':post_slug') }}";
+                        post_slug = post_slug.replace(':post_slug', item.post_slug);
+                        responseNotifications +=
+                            '<a class="dropdown-item d-flex align-items-center" href=' +
+                            post_slug + '>\
+                                                            <div class="ml-3">\
+                                                                <div">\
+                                                                    <img style="float:right" src=' + item.user_image + ' width="50px" class="rounded-full"/>\
+                                                                </div>\
+                                                            </div>\
+                                                            <div>\
+                                                                <div class="small text-gray-500">' + item.date + '</div>\
+                                                                <span>' + item.user_name + ' وضع تعليقًا على المنشور <b>' +
+                            item
+                            .post_title + '<b></span>\
+                                                            </div>\
+                                                        </a>';
+
+                        $('.alert-body').html(responseNotifications);
+                    });
+                }
+            });
+        });
     </script>
 
     @yield('script')

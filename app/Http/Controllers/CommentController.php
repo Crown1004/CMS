@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\CommentNotification;
 use App\Models\Comment;
+use App\Models\Notification;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -49,6 +50,15 @@ class CommentController extends Controller
         $post = Post::find($request->get('post_id'));
 
         $post->comments()->save($comment);
+
+        // save notifications in database
+        $notification = new Notification();
+        if ($request->user()->id != $post->user_id) { // dont send notification to the user when he comment on his post
+            $notification->user_id = $request->user()->id; // from
+            $notification->post_id = $post->id;
+            $notification->post_userId = $post->user_id; // to
+            $notification->save();
+        }
 
         // when the user comment on a post store() will be executed create this event and send this data to it
         $data = [
