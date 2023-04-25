@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alert;
 use App\Models\Notification;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
@@ -15,23 +18,32 @@ class NotificationController extends Controller
 
     public function index()
     {
-        $all_notifications = Notification::where([
-            ['user_id', '!=', auth()->user()->id], // dont show the notifications of the current user
-            ['post_userId', '=', auth()->user()->id], // show the notifications of the current user
-        ])->orderBy('created_at', 'desc')->limit(4)->get();
 
-        $data = []; // to send to ajax
+        $someNotifications = Notification::where([
+            ['user_id', '!=', auth()->user()->id],
+            ['post_userId', '=', auth()->user()->id]
+        ])
+            ->orderBy('created_at', 'desc')
+            ->limit(4)
+            ->get();
 
-        foreach ($all_notifications as $notification) {
+        $data = [];
+        foreach ($someNotifications as $item) {
             $data[] = [
-                'user_name' => $notification->user->name,
-                'user_image' => $notification->user->image,
-                'post_title' => $notification->post->title,
-                'post_slug' => $notification->post->slug,
-                'date' => $notification->created_at->diffForHumans(),
+                'user_name' => User::find($item->user_id)->name,
+                'user_image' => User::find($item->user_id)->profile_photo_url,
+                'post_title' => Post::find($item->post_id)->title,
+                'post_slug' => Post::find($item->post_id)->slug,
+                'date' => $item->created_at->diffForHumans()
             ];
         }
 
-        return response()->json(['all_notifications' => $data]);
+
+        $alert = Alert::where('user_id', auth()->user()->id)->first();
+
+        $alert->alert = 0;
+        $alert->save();
+
+        return response()->json(['someNotifications' => $data]);
     }
 }

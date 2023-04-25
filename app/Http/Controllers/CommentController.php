@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\CommentNotification;
+use App\Models\Alert;
 use App\Models\Comment;
 use App\Models\Notification;
 use App\Models\Post;
@@ -69,6 +70,12 @@ class CommentController extends Controller
         ];
         event(new CommentNotification($data));
 
+        // to count notifications
+        if ($request->user()->id != $post->user_id) { // to not count the notification of the user when he comment on his post
+            $alert = Alert::where('user_id', $post->user_id)->first();
+            $alert->alert++;
+            $alert->save();
+        }
 
         return back()->with('success', 'تم إضافة التعليق بنجاح');
     }

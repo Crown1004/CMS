@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('alerts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->integer('alert'); // unread alerts to show it in the notifications button as(2)
+            $table->integer('alert')->default(0); // unread alerts to show it in the notifications button as(2)
             $table->timestamps();
         });
     }
