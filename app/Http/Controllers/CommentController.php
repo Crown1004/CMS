@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CommentNotification;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -37,24 +38,34 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request , [
+        $this->validate($request, [
             'body' => 'required',
         ]);
 
         $comment = $this->comment;
         $comment->body = $request->get('body');
-        $comment->post_id= $request->get('post_id'); // send from the hidden input
+        $comment->post_id = $request->get('post_id'); // send from the hidden input
         $comment->user()->associate($request->user()); // to link the comment with the user using associate as i used morph many relation
         $post = Post::find($request->get('post_id'));
 
         $post->comments()->save($comment);
 
-        return back()->with('success' , 'تم إضافة التعليق بنجاح');
+        // when the user comment on a post store() will be executed create this event and send this data to it
+        $data = [
+            'post' => $post,
+            'post_title' => $post->title,
+            'user_name' => $request->user()->name,
+            'user_image' => $request->user()->profile_photo_url,
+        ];
+        event(new CommentNotification($data));
+
+
+        return back()->with('success', 'تم إضافة التعليق بنجاح');
     }
 
     public function replyStore(Request $request)
     {
-        $this->validate($request , [
+        $this->validate($request, [
             'comment_body' => 'required',
         ]);
 
@@ -67,7 +78,7 @@ class CommentController extends Controller
 
         $post->comments()->save($reply);
 
-        return back()->with('success' , 'تم إضافة الرد بنجاح');
+        return back()->with('success', 'تم إضافة الرد بنجاح');
     }
 
     /**
