@@ -110,9 +110,11 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $this->post::find($id)->delete();
+
+        return back()->with('success', __('تم حذف المنشور بنجاح'));
     }
 
     public function search(Request $request)

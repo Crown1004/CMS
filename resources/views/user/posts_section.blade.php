@@ -1,4 +1,4 @@
-@includewhen(!count($contents->posts), 'alerts.empty', ['msg' => 'لا توجد أي مشاركات بعد'])
+@includewhen(!count($contents->posts), 'alerts.empty', ['message' => 'لا توجد أي مشاركات بعد'])
 
 @foreach ($contents->posts as $post)
     <div class="row mb-2">
@@ -7,6 +7,13 @@
                 <div class="row">
                     <div class="col-12">
 
+                        <form method="POST" action="{{ route('post.destroy', $post->id) }}"
+                            onsubmit="return confirm('{{__('هل أنت متأكد أنك تريد حذف المنشور هذا؟')}}')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="float-left"><i
+                                    class="far fa-trash-alt text-danger fa-lg"></i></button>
+                        </form>
                         @if (Auth::check())
                             <form method="GET" action="{{ route('post.edit', $post->id) }}">
                                 @csrf

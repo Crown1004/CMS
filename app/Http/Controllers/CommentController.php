@@ -125,8 +125,10 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $this->comment->find($id)->delete();
+
+        return back()->with('success', __('تم حذف التعليق بنجاح'));
     }
 }

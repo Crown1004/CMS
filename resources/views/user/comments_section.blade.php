@@ -10,18 +10,26 @@
                     </div>
                     <div class="col-10">
 
-                            <p class="mt-3 mb-2"><strong>{{ $comment->user->name }}</strong></p>
+                        <form method="POST" action="{{ route('comment.destroy', $comment->id) }}"
+                            onsubmit="return confirm('{{ __('هل أنت متأكد أنك تريد حذف التعليق هذا؟') }}')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="float-left"><i
+                                    class="far fa-trash-alt text-danger fa-lg"></i></button>
+                        </form>
 
-                            <i class="far fa-clock"></i>
-                            <span class="comment_date text-secondary">{{ $comment->created_at->diffForHumans() }}
-                            </span>
+                        <p class="mt-3 mb-2"><strong>{{ $comment->user->name }}</strong></p>
 
-                            <a href="{{ route('post.show', $comment->Post->slug) }}#comments">
-                                <p class="mt-3">{{ \Illuminate\Support\Str::limit($comment->body, 250) }}</p>
-                            </a>
-                        </div>
+                        <i class="far fa-clock"></i>
+                        <span class="comment_date text-secondary">{{ $comment->created_at->diffForHumans() }}
+                        </span>
+
+                        <a href="{{ route('post.show', $comment->Post->slug) }}#comments">
+                            <p class="mt-3">{{ \Illuminate\Support\Str::limit($comment->body, 250) }}</p>
+                        </a>
                     </div>
                 </div>
             </div>
-        @endforeach
-    </div>
+        </div>
+    @endforeach
+</div>
