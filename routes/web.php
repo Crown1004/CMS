@@ -33,3 +33,4 @@ Route::resource('/comment', CommentController::class);
 Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.add');
 
 Route::post('/notification', [NotificationController::class, 'index'])->name('notification');
+Route::get('/notification', [NotificationController::class, 'allNotifications'])->name('all.notifications');

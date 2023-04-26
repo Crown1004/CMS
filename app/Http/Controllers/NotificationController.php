@@ -20,8 +20,8 @@ class NotificationController extends Controller
     {
 
         $someNotifications = Notification::where([
-            ['user_id', '!=', auth()->user()->id],
-            ['post_userId', '=', auth()->user()->id]
+            ['user_id', '!=', auth()->user()->id],  // dont show the notifications of the current user
+            ['post_userId', '=', auth()->user()->id] // show the notifications of the current user
         ])
             ->orderBy('created_at', 'desc')
             ->limit(4)
@@ -45,5 +45,19 @@ class NotificationController extends Controller
         $alert->save();
 
         return response()->json(['someNotifications' => $data]);
+    }
+
+    public function allNotifications()
+    {
+        $notifications = Notification::where([
+            ['user_id', '!=', auth()->user()->id],  // dont show the notifications of the current user
+            ['post_userId', '=', auth()->user()->id] // show the notifications of the current user
+        ])
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
+            $title = __('جميع الإشعارات');
+
+        return view('notifications.show', compact('notifications', 'title'));
     }
 }
