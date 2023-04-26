@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Slug;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -68,23 +69,42 @@ class PostController extends Controller
         $post = $this->post::where('slug', $slug)->first();
         $comments = $post->comments->sortByDesc('created_at');
 
-        return view('posts.show', compact('post' ,'comments'));
+        return view('posts.show', compact('post', 'comments'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $post = $this->post::find($id);
+
+        return view('posts.edit', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $data = $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+            'image' => 'nullable',
+        ]);
+
+        $data['slug'] = Slug::uniqueSlug($request->title, 'posts'); // if the user change the title the slug will change too // Slug::uniqueSlug($request->title, 'posts') is a function in the Slug class in the helpers folders
+        $data['category_id'] = $request->category_id;
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $file_new_name = time() . $file->getClientOriginalName(); // save the image with time . original name
+            $file->storeAs('public/images', $file_new_name);
+        }
+
+        $request->user()->posts()->where('slug', $slug)->update($data + ['image_path' => $file_new_name ?? 'default.jpg']);
+
+        return redirect(route('post.show', $data['slug']))->with('success', __('تم تعديل المنشور بنجاح'));
     }
 
     /**

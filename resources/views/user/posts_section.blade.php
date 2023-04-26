@@ -7,7 +7,18 @@
                 <div class="row">
                     <div class="col-12">
 
-                        <img style="float:right" src="{{ $post->user->profile_photo_url }}" width="50px" class="rounded-full" />
+                        @if (Auth::check())
+                            <form method="GET" action="{{ route('post.edit', $post->id) }}">
+                                @csrf
+                                @method('PATCH')
+                                <button type="submit" class="float-left">
+                                    <i class="far fa-edit text-success fa-lg ml-3"></i>
+                                </button>
+                            </form>
+                        @endif
+
+                        <img style="float:right" src="{{ $post->user->profile_photo_url }}" width="50px"
+                            class="rounded-full" />
 
                         <p class="mt-2 me-3" style="display:inline-block;"><strong>{{ $post->user->name }}</strong></p>
 
