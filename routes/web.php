@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,3 +35,5 @@ Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('rep
 
 Route::post('/notification', [NotificationController::class, 'index'])->name('notification');
 Route::get('/notification', [NotificationController::class, 'allNotifications'])->name('all.notifications');
+
+Route::get('user/{id}'  , [UserController::class, 'getPostsByUser'])->name('profile');
