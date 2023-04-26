@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
-        public $user;
+    public $user;
 
     public function __construct(User $user)
     {
@@ -18,6 +18,13 @@ class UserController extends Controller
     public function getPostsByUser($id)
     {
         $contents = $this->user::with('posts')->find($id); // get user with posts
+
+        return view('user.profile', compact('contents'));
+    }
+
+    public function getCommentsByUser($id)
+    {
+        $contents = $this->user::with('comments')->find($id); // get user with comments
 
         return view('user.profile', compact('contents'));
     }
@@ -77,6 +84,4 @@ class UserController extends Controller
     {
         //
     }
-
-
 }

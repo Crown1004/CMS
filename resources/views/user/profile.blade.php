@@ -11,15 +11,29 @@
 
         <div class="row p-3">
             <ul class="nav nav-tabs mb-3">
+
+                @php
+                    $user_id = $contents->id; // contents is user with his posts and comments
+                    $current_route = Route::currentRouteName(); // check if current route is profile or user.comments
+                @endphp
+
                 <li class="nav-item" style="list-style:none">
-                    <a class="nav-link" href=""> {{__('منشوراتي')}} </a>
+                    <a class="nav-link {{ $current_route == 'profile' ? 'active' : '' }}" href="{{ route('profile' , $user_id) }}"> {{ __('منشوراتي') }} </a>
                 </li>
                 <li class="nav-item" style="list-style:none">
-                    <a class="nav-link" href=""> {{__('تعليقاتي')}} </a>
+                    <a class="nav-link {{ $current_route == 'user.comments' ? 'active' : '' }}" href="{{ route('user.comments' , $user_id) }}"> {{ __('تعليقاتي') }} </a>
                 </li>
             </ul>
 
-            @include('user.posts_section')
+
+
+            @if ($current_route == 'profile')
+                @include('user.posts_section')
+            @else
+                @include('user.comments_section')
+            @endif
+
+
 
         </div>
     </div>

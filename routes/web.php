@@ -37,3 +37,4 @@ Route::post('/notification', [NotificationController::class, 'index'])->name('no
 Route::get('/notification', [NotificationController::class, 'allNotifications'])->name('all.notifications');
 
 Route::get('user/{id}'  , [UserController::class, 'getPostsByUser'])->name('profile');
+Route::get('user/{id}/comments'  , [UserController::class, 'getCommentsByUser'])->name('user.comments');
