@@ -12,6 +12,12 @@
             <label for="title" class="mb-2"> {{ __('التصنيف') }}</label>
             <div class="input-group mb-3">
                 <select class="form-select" name="category_id">
+
+                    {{-- to hide error i dont use this $post variable --}}
+                    @php
+                        $post = new App\Models\Post;
+                    @endphp
+
                     @include('lists.categories') {{-- show all the categories --}}
                 </select>
             </div>

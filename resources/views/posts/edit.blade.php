@@ -13,7 +13,7 @@
             <label for="title" class="mb-2"> {{ __('التصنيف') }} </label>
             <div class="input-group mb-3">
                 <select class="form-select" name="category_id">
-                    <option value="{{ $post->category_id }}"> {{ $post->category->title }} </option>
+                    {{-- <option value="{{ $post->category_id }}"> {{ $post->category->title }} </option> --}}
                     @include('lists.categories')
                 </select>
             </div>
