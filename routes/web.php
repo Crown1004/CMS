@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PostController;
@@ -36,5 +37,7 @@ Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('rep
 Route::post('/notification', [NotificationController::class, 'index'])->name('notification');
 Route::get('/notification', [NotificationController::class, 'allNotifications'])->name('all.notifications');
 
-Route::get('user/{id}'  , [UserController::class, 'getPostsByUser'])->name('profile');
-Route::get('user/{id}/comments'  , [UserController::class, 'getCommentsByUser'])->name('user.comments');
+Route::get('user/{id}', [UserController::class, 'getPostsByUser'])->name('profile');
+Route::get('user/{id}/comments', [UserController::class, 'getCommentsByUser'])->name('user.comments');
+
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
