@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PostController;
@@ -41,3 +42,4 @@ Route::get('user/{id}', [UserController::class, 'getPostsByUser'])->name('profil
 Route::get('user/{id}/comments', [UserController::class, 'getCommentsByUser'])->name('user.comments');
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::resource('/admin/category' , CategoryController::class);
