@@ -13,7 +13,8 @@
                     @csrf
                     <div class="row mt-1">
                         <div class="col">
-                            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="{{__('التصنيف')}}">
+                            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
+                                placeholder="{{ __('التصنيف') }}">
                             @error('title')
                                 <span class="invalid-feedback">
                                     <strong>{{ $message }}</strong>
@@ -22,7 +23,7 @@
                         </div>
 
                         <div class="col">
-                            <button type="submit" class="btn btn-dark"> {{__('حفظ')}}</button>
+                            <button type="submit" class="btn btn-dark"> {{ __('حفظ') }}</button>
                         </div>
                     </div>
                 </form>
@@ -48,10 +49,13 @@
                                     <td>{{ $category->slug }}</td>
                                     <td>{{ $category->created_at }}</td>
                                     <td>
-                                        <form method="post" action="{{ route('category.destroy', $category->id) }}">
+                                        <form method="post" action="{{ route('category.destroy', $category->id) }}"
+                                            onsubmit="return confirm('{{ __('هل أنت متأكد أنك تريد حذف التصنيف هذا؟') }}')">
+
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-link" style="background-color: white;border: none;">
+                                            <button type="submit" class="btn btn-link"
+                                                style="background-color: white;border: none;">
                                                 <i class="far fa-trash-alt text-danger fa-lg"></i>
                                             </button>
                                         </form>

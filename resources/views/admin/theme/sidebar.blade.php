@@ -12,8 +12,8 @@
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item {{ request()->is('admin/dashboard') ? 'active' : '' }}" >
-            <a class="nav-link text-right" href="{{route('admin.dashboard')}}">
+        <li class="nav-item {{ request()->is('admin/dashboard') ? 'active' : '' }}">
+            <a class="nav-link text-right" href="{{ route('admin.dashboard') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>الإحصائيات</span></a>
         </li>
@@ -21,7 +21,7 @@
         <!-- Nav Item - Pages Collapse Menu -->
         {{-- /category* the * means any thing that comes after the * ex. delete ,create ect.. --}}
         <li class="nav-item {{ request()->is('admin/category*') ? 'active' : '' }}">
-            <a class="nav-link text-right" href="{{route('category.index')}}">
+            <a class="nav-link text-right" href="{{ route('category.index') }}">
                 <i class="fas fa-book-open"></i>
                 <span>التصنيفات</span>
             </a>
@@ -36,8 +36,9 @@
         </li>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link text-right" href="#">
+        {{-- /posts* the * means any thing that comes after the * ex. delete ,create ect.. --}}
+        <li class="nav-item {{ request()->is('admin/posts*') ? 'active' : '' }}">
+            <a class="nav-link text-right" href="{{ route('posts.index') }}">
                 <i class="fas fa-pen-fancy"></i>
                 <span>المنشورات</span>
             </a>
