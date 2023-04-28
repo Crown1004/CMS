@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\PermissionController;
 use App\Http\Controllers\admin\PostController as AdminPostController;
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\CategoryController;
@@ -47,3 +48,5 @@ Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('adm
 Route::resource('/admin/category' , CategoryController::class);
 Route::resource('/admin/posts' , AdminPostController::class);
 Route::resource('/admin/role' , RoleController::class);
+Route::get('/admin/permission' , [PermissionController::class, 'index'])->name('permissions'); // for showing permissions
+Route::post('/admin/permission' , [PermissionController::class, 'store'])->name('permissions'); // for storing permissions

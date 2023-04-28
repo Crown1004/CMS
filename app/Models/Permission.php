@@ -9,8 +9,8 @@ class Permission extends Model
 {
     use HasFactory;
 
-    public function rules()
+    public function roles()
     {
-        return $this->belongsToMany(Rule::class); // for ex. a user and an admin have a permission to create a post
+        return $this->belongsToMany(Role::class); // for ex. a user and an admin have a permission to create a post
     }
 }
