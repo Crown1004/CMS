@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\PostController as AdminPostController;
+use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\NotificationController;
@@ -45,3 +46,4 @@ Route::get('user/{id}/comments', [UserController::class, 'getCommentsByUser'])->
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::resource('/admin/category' , CategoryController::class);
 Route::resource('/admin/posts' , AdminPostController::class);
+Route::resource('/admin/role' , RoleController::class);

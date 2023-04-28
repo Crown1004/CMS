@@ -45,8 +45,9 @@
         </li>
 
         <!-- Nav Item - Charts -->
-        <li class="nav-item">
-            <a class="nav-link text-right" href="#">
+        {{-- /role* the * means any thing that comes after the * ex. delete ,create ect.. --}}
+        <li class="nav-item {{ request()->is('admin/role*') ? 'active' : '' }}">
+            <a class="nav-link text-right" href="{{ route('role.index') }}">
                 <i class="fas fa-table"></i>
                 <span>الأدوار</span></a>
         </li>
