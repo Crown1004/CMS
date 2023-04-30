@@ -15,7 +15,7 @@
         <li class="nav-item {{ request()->is('admin/dashboard') ? 'active' : '' }}">
             <a class="nav-link text-right" href="{{ route('admin.dashboard') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>الإحصائيات</span></a>
+                <span> {{__('الإحصائيات')}}</span></a>
         </li>
 
         <!-- Nav Item - Pages Collapse Menu -->
@@ -23,15 +23,16 @@
         <li class="nav-item {{ request()->is('admin/category*') ? 'active' : '' }}">
             <a class="nav-link text-right" href="{{ route('category.index') }}">
                 <i class="fas fa-book-open"></i>
-                <span>التصنيفات</span>
+                <span> {{__('التصنيفات')}}</span>
             </a>
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link text-right" href="#">
+        {{-- /user* the * means any thing that comes after the * ex. delete ,create ect.. --}}
+        <li class="nav-item {{ request()->is('admin/user*') ? 'active' : '' }}">
+            <a class="nav-link text-right" href="{{route('user.index')}}">
                 <i class="fas fa-users"></i>
-                <span>المستخدمون</span>
+                <span> {{__('المستخدمون')}}</span>
             </a>
         </li>
 
@@ -40,7 +41,7 @@
         <li class="nav-item {{ request()->is('admin/posts*') ? 'active' : '' }}">
             <a class="nav-link text-right" href="{{ route('posts.index') }}">
                 <i class="fas fa-pen-fancy"></i>
-                <span>المنشورات</span>
+                <span> {{__('المنشورات')}}</span>
             </a>
         </li>
 
@@ -49,7 +50,7 @@
         <li class="nav-item {{ request()->is('admin/role*') ? 'active' : '' }}">
             <a class="nav-link text-right" href="{{ route('role.index') }}">
                 <i class="fas fa-table"></i>
-                <span>الأدوار</span></a>
+                <span> {{__('الأدوار')}} </span></a>
         </li>
 
         <!-- Nav Item - Tables -->
@@ -57,13 +58,13 @@
         <li class="nav-item {{ request()->is('admin/permission*') ? 'active' : '' }}">
             <a class="nav-link text-right" href="{{ route('permissions') }}">
                 <i class="fas fa-folder"></i>
-                <span>الصلاحيات</span></a>
+                <span> {{__('الصلاحيات')}}</span></a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link text-right" href="#">
                 <i class="fas fa-file"></i>
-                <span>الصفحات</span></a>
+                <span>الصفحات {{__('')}}</span></a>
         </li>
 
         <!-- Divider -->

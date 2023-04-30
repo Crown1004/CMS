@@ -50,5 +50,6 @@ Route::resource('/admin/posts' , AdminPostController::class);
 Route::resource('/admin/role' , RoleController::class);
 Route::get('/admin/permission' , [PermissionController::class, 'index'])->name('permissions'); // for showing permissions
 Route::post('/admin/permission' , [PermissionController::class, 'store'])->name('permissions'); // for storing permissions
+Route::resource('admin/user' , UserController::class);
 
 Route::get('/permission/byRole' , [RoleController::class , 'getByRole'])->name('permission_byRole'); // receive role_id send from ajax in admin.permission.index
