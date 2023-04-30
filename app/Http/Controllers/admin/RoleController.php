@@ -83,4 +83,11 @@ class RoleController extends Controller
 
         return back()->with('success', __('تم حذف الدور بنجاح'));
     }
+
+    public function getByRole(Request $data) // return the permissions of a role send from ajax in admin.permission.index using role_id
+    {
+        $permissions = $this->role::find($data->id)->permissions()->pluck('permission_id');
+
+        return $permissions;
+    }
 }

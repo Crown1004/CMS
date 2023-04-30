@@ -41,8 +41,8 @@ Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('rep
 Route::post('/notification', [NotificationController::class, 'index'])->name('notification');
 Route::get('/notification', [NotificationController::class, 'allNotifications'])->name('all.notifications');
 
-Route::get('user/{id}', [UserController::class, 'getPostsByUser'])->name('profile');
-Route::get('user/{id}/comments', [UserController::class, 'getCommentsByUser'])->name('user.comments');
+Route::get('/user/{id}', [UserController::class, 'getPostsByUser'])->name('profile');
+Route::get('/user/{id}/comments', [UserController::class, 'getCommentsByUser'])->name('user.comments');
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::resource('/admin/category' , CategoryController::class);
@@ -50,3 +50,5 @@ Route::resource('/admin/posts' , AdminPostController::class);
 Route::resource('/admin/role' , RoleController::class);
 Route::get('/admin/permission' , [PermissionController::class, 'index'])->name('permissions'); // for showing permissions
 Route::post('/admin/permission' , [PermissionController::class, 'store'])->name('permissions'); // for storing permissions
+
+Route::get('/permission/byRole' , [RoleController::class , 'getByRole'])->name('permission_byRole'); // receive role_id send from ajax in admin.permission.index

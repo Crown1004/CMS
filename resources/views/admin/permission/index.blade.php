@@ -12,7 +12,7 @@
                 @csrf
                 <div class="card-header">
                     <div class="col-lg-6 form-group">
-                        <label for="role_id"><i class="fa fa-table "></i> {{ __('حدد الدور') }}</label>
+                        <label for="role_id">{{ __('حدد الدور') }}</label>
                         <select name="role_id" id="role_id" class="form-control">
                             @include('lists.roles')
                         </select>
@@ -22,7 +22,8 @@
                     @foreach ($permissions as $permission)
                         <div class="col-lg-4">
                             <label for="permission">
-                                <input type="checkbox" class="" name="permission[]" value="{{ $permission->id }}">
+                                {{-- by default show the permission of role 1 if user selected another one use ajax below --}}
+                                <input type="checkbox" class="" name="permission[]" value="{{ $permission->id }}" {{ $permission->roles()->find(1) ? 'checked' : '' }}>
                                 {{ $permission->description }}
                             </label>
                         </div>
@@ -36,3 +37,33 @@
     </div>
 @endsection
 
+{{-- send  --}}
+@section('script')
+    <script>
+        $('#role_id').on('change', function(event) {
+            var role_id = $(this).val();
+            var token = '{{ Session::token() }}';
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '{{ route('permission_byRole') }}',
+                method: 'GET',
+                data: {
+                    'id': role_id,
+                    _token: token
+                },
+                success: function(
+                data) { // if success receive the permissions from the RoleController from the method getByRole
+                    $('input[type=checkbox]').each(function() {
+                        var ThisVal = parseInt(this.value);
+                        if (data.includes(ThisVal))
+                            this.checked = true;
+                        else
+                            this.checked = false;
+                    });
+                }
+            })
+        });
+    </script>
+@endsection
