@@ -2,16 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+
+    public $page;
+
+    public function __construct(Page $page)
+    {
+        $this->page = $page;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $pages = $this->page->all();
+        return view('admin.pages.index', compact('pages'));
     }
 
     /**
@@ -19,7 +29,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.create');
     }
 
     /**
@@ -27,7 +37,15 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'slug' => 'required',
+        ]);
+
+        $this->page->create($request->all());
+
+        return redirect()->route('page.index')->with('success', __('تم إضافة الصفحة بنجاح'));
     }
 
     /**

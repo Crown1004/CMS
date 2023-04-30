@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -51,5 +52,7 @@ Route::resource('/admin/role' , RoleController::class);
 Route::get('/admin/permission' , [PermissionController::class, 'index'])->name('permissions'); // for showing permissions
 Route::post('/admin/permission' , [PermissionController::class, 'store'])->name('permissions'); // for storing permissions
 Route::resource('admin/user' , UserController::class);
+Route::resource('admin/page', PageController::class);
 
 Route::get('/permission/byRole' , [RoleController::class , 'getByRole'])->name('permission_byRole'); // receive role_id send from ajax in admin.permission.index
+
