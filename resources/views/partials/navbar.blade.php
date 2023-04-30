@@ -10,26 +10,20 @@
                 <li class="nav-item me-5" style="list-style: none">
                     <a class="nav-link active" aria-current="page" href="{{ url('/') }}">الصفحة الرئيسية</a>
                 </li>
-                <li class="nav-item dropdown" style="list-style: none">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        الصفحات
-                    </a>
 
                 <li class="nav-item dropdown" style="list-style: none">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        {{ __('Dropdown') }}
+                        {{ __('الصفحات') }}
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">aAnother action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
+
+                    <div class="text-right dropdown-menu">
+                        @foreach ($pages as $page)
+                            <a class="dropdown-item" href="{{ route('page.show', $page->slug) }}">
+                                {{ $page->title }}
+                            </a>
+                        @endforeach
+                    </div>
                 </li>
             </ul>
 
@@ -98,7 +92,8 @@
 
                                 <div class="mt-3 space-y-1">
                                     <!-- Profile -->
-                                    <x-responsive-nav-link href="{{ route('profile' , auth()->user()->id) }}" :active="request()->routeIs('profile')">
+                                    <x-responsive-nav-link href="{{ route('profile', auth()->user()->id) }}"
+                                        :active="request()->routeIs('profile')">
                                         <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                                     </x-responsive-nav-link>
 

@@ -30,7 +30,7 @@
                     </td>
                     <td>
                         <form method="POST" action="{{ route('page.destroy', $page->id) }}"
-                            onsubmit="return confirm({{ 'هل أنت متأكد أنك تريد حذف الصفحة؟' }})">
+                            onsubmit="return confirm('{{ __('هل أنت متأكد أنك تريد حذف الصفحة؟') }}')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" style="background-color: inherit;border: none;"><i

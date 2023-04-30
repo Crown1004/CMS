@@ -51,32 +51,40 @@ class PageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($slug)
     {
-        //
+        $page = $this->page->whereSlug($slug)->first(); // whereSlug is equal to where('slug', $slug)
+
+        return view('admin.pages.show', compact('page'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $page = $this->page->find($id);
+
+        return view('admin.pages.edit', compact('page'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $this->page->find($id)->update($request->all());
+
+        return redirect()->route('page.index')->with('success', __('تم تعديل الصفحة بنجاح'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $this->page->find($id)->delete();
+
+        return redirect()->route('page.index')->with('success', __('تم حذف الصفحة بنجاح'));
     }
 }

@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Http\Controllers\viewComposers\CategoryComposer;
 use App\Http\Controllers\viewComposers\RoleComposer;
 use App\Http\Controllers\viewComposers\CommentComposer;
+use App\Http\Controllers\viewComposers\PageComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('lists.roles', RoleComposer::class);
 
-        View::composer('partials.sidebar' , CommentComposer::class);
+        View::composer('partials.sidebar', CommentComposer::class);
+
+        View::composer('partials.navbar', PageComposer::class);
     }
 }
