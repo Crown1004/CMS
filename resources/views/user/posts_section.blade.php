@@ -6,22 +6,27 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-
-                        <form method="POST" action="{{ route('post.destroy', $post->id) }}"
-                            onsubmit="return confirm('{{__('هل أنت متأكد أنك تريد حذف المنشور هذا؟')}}')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="float-left"><i
-                                    class="far fa-trash-alt text-danger fa-lg"></i></button>
-                        </form>
                         @if (Auth::check())
-                            <form method="GET" action="{{ route('post.edit', $post->id) }}">
-                                @csrf
-                                @method('PATCH')
-                                <button type="submit" class="float-left">
-                                    <i class="far fa-edit text-success fa-lg ml-3"></i>
-                                </button>
-                            </form>
+                            @can('delete-post', $post)
+                                <form method="POST" action="{{ route('post.destroy', $post->id) }}"
+                                    onsubmit="return confirm('{{ __('هل أنت متأكد أنك تريد حذف المنشور هذا؟') }}')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="float-left">
+                                        <i class="far fa-trash-alt text-danger fa-lg"></i>
+                                    </button>
+                                </form>
+                            @endcan
+
+                            @can('edit-post', $post)
+                                <form method="GET" action="{{ route('post.edit', $post->id) }}">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="float-left">
+                                        <i class="far fa-edit text-success fa-lg ml-3"></i>
+                                    </button>
+                                </form>
+                            @endcan
                         @endif
 
                         <img style="float:right" src="{{ $post->user->profile_photo_url }}" width="50px"

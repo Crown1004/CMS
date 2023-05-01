@@ -88,4 +88,9 @@ class User extends Authenticatable
     {
         return $this->role_id == 1; // check if the user is admin
     }
+
+    public function isAllowedTo($permission) // check if the user is allowed to do something
+    {
+        return $this->role->permissions()->whereName($permission)->exists();
+    }
 }
