@@ -79,6 +79,8 @@ class PostController extends Controller
     {
         $post = $this->post::find($id);
 
+        abort_unless(auth()->user()->can('edit-post', $post) , 403); // to prevent the user from editing other posts through the url
+
         return view('posts.edit', compact('post'));
     }
 

@@ -73,11 +73,11 @@
                 </div>
 
                 @guest
-                    <li class="nav-item my-auto">
+                    <li class="nav-item my-auto"  style="list-style: none">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('تسجيل الدخول') }}</a>
                     </li>
 
-                    <li class="nav-item my-auto">
+                    <li class="nav-item my-auto"  style="list-style: none">
                         <a class="nav-link" href="{{ route('register') }}">{{ __('إنشاء حساب') }}</a>
                     </li>
                 @else
