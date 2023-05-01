@@ -14,7 +14,7 @@
             <div class="input-group mb-3">
                 <select class="form-select" name="category_id">
                     {{-- <option value="{{ $post->category_id }}"> {{ $post->category->title }} </option> --}}
-                    @include('lists.categories')
+                    @include('lists.categories' , ['id' => $post->category_id])
                 </select>
             </div>
 

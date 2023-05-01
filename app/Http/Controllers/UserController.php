@@ -98,12 +98,14 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => "required",
+            'role_id' => 'required',
         ]);
 
         $user = $this->user::find($id);
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->role_id = $request->role_id;
 
         $user->save();
 

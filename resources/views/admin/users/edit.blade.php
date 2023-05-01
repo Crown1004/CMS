@@ -41,8 +41,8 @@
                             <div class="col-lg-6 form-group">
                                 <label for="role_id"> {{ __('الدور') }}</label>
                                 <select class="form-control" name="role_id">
-                                    <option value="{{ $user->role_id }}" selected> {{ $user->role->role }} </option>
-                                    @include('lists.roles')
+                                    {{-- <option value="{{ $user->role_id }}" selected> {{ $user->role->role }} </option> --}}
+                                    @include('lists.roles' , ['id' => $user->role_id])
                                 </select>
                             </div>
                         </div>
