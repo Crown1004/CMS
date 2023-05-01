@@ -6,6 +6,7 @@ use App\Http\Controllers\viewComposers\CategoryComposer;
 use App\Http\Controllers\viewComposers\RoleComposer;
 use App\Http\Controllers\viewComposers\CommentComposer;
 use App\Http\Controllers\viewComposers\PageComposer;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -31,5 +32,9 @@ class AppServiceProvider extends ServiceProvider
         View::composer('partials.sidebar', CommentComposer::class);
 
         View::composer('partials.navbar', PageComposer::class);
+
+        Blade::if('admin', function () { // make a blade directive to check if the user is admin or not named @admin
+            return auth()->check() && auth()->user()->isAdmin();
+        });
     }
 }

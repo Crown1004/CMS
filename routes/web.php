@@ -23,15 +23,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/', [PostController::class, 'index']);
-});
 
-// Route::get('/', [PostController::class, 'index']);
+
+Route::get('/', [PostController::class, 'index']);
 Route::resource('/post', PostController::class);
 Route::post('/search', [PostController::class, 'search'])->name('search');
 Route::get('/category/{id}/{slug}', [PostController::class, 'getByCategory'])->name('category');
@@ -45,14 +39,25 @@ Route::get('/notification', [NotificationController::class, 'allNotifications'])
 Route::get('/user/{id}', [UserController::class, 'getPostsByUser'])->name('profile');
 Route::get('/user/{id}/comments', [UserController::class, 'getCommentsByUser'])->name('user.comments');
 
-Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-Route::resource('/admin/category' , CategoryController::class);
-Route::resource('/admin/posts' , AdminPostController::class);
-Route::resource('/admin/role' , RoleController::class);
-Route::get('/admin/permission' , [PermissionController::class, 'index'])->name('permissions'); // for showing permissions
-Route::post('/admin/permission' , [PermissionController::class, 'store'])->name('permissions'); // for storing permissions
-Route::resource('admin/user' , UserController::class);
-Route::resource('admin/page', PageController::class);
+Route::group(['prefix' => 'admin', 'middleware' => 'Admin'], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::resource('/category', CategoryController::class);
+    Route::resource('/posts', AdminPostController::class);
+    Route::resource('/role', RoleController::class);
+    Route::get('/permission', [PermissionController::class, 'index'])->name('permissions'); // for showing permissions
+    Route::post('/permission', [PermissionController::class, 'store'])->name('permissions'); // for storing permissions
+    Route::resource('/user', UserController::class);
+    Route::resource('/page', PageController::class);
+});
 
-Route::get('/permission/byRole' , [RoleController::class , 'getByRole'])->name('permission_byRole'); // receive role_id send from ajax in admin.permission.index
+Route::get('/permission/byRole', [RoleController::class, 'getByRole'])->name('permission_byRole')->middleware('Admin'); // receive role_id send from ajax in admin.permission.index
 
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

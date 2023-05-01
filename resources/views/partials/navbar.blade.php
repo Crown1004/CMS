@@ -91,6 +91,13 @@
                             <div class="pt-4 pb-1 border-t border-gray-200">
 
                                 <div class="mt-3 space-y-1">
+
+                                    @admin
+                                        <a href="{{ route('admin.dashboard') }}" class="dropdown-item">
+                                            {{ __('لوحة الإدارة') }}
+                                        </a>
+                                    @endadmin
+
                                     <!-- Profile -->
                                     <x-responsive-nav-link href="{{ route('profile', auth()->user()->id) }}"
                                         :active="request()->routeIs('profile')">
@@ -114,7 +121,7 @@
 
                                         <x-responsive-nav-link href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                          this.closest('form').submit();">
+                                        this.closest('form').submit();">
                                             {{ __('تسجيل خروج') }}
                                         </x-responsive-nav-link>
                                     </form>

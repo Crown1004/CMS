@@ -84,4 +84,8 @@ class User extends Authenticatable
         return $this->hasOne(Alert::class); // an user has an alert and vise versa
     }
 
+    public function isAdmin()
+    {
+        return $this->role_id == 1; // check if the user is admin
+    }
 }
