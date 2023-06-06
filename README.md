@@ -69,7 +69,7 @@ the admin can add/delete/edit a page :
 ## installation
 
 <ul>
-<li><code>git clone https://github.com/AHMED-GAMAL-AG/Content-Management-System.git</code></li>
+<li><code>git clone github.com/AHMED-GAMAL-AG/Content-Management-System.git</code></li>
 <li><code>Create a .env file and configure the database.</code></li>
 <li><code>composer install</code></li>
 <li><code>npm install</code></li>
