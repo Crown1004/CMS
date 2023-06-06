@@ -15,6 +15,7 @@ class PostController extends Controller
     public function __construct(Post $post)
     {
         $this->post = $post;
+        $this->middleware('verified')->only('create'); // user should verify his email before creating a post
     }
 
     /**
