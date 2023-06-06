@@ -27,9 +27,11 @@ see recent comments on the platform and click through it to see the related post
 ![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/ec45b5fa-28ac-49b6-9a56-b2cfde0428ed)
 
 the user can create a post :
+
 ![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/95312b2d-0259-457b-8200-b8625f4caf29)
 
 the user receives a notification when someone comment on his post :
+
 ![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/e67d1d4d-b18d-418b-9f18-ba55eb4f6d75)
 
 the admin can see the statistics of the website :
