@@ -1,66 +1,65 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Content Mangment System (cms)
+a feature-rich cms platform with strong adminisiration capabalites 
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Screenshots
 
-## About Laravel
+home page : 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/f58ef17b-f357-46b7-9545-c98344e27652)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+the user can view a post, leave a comment, or a reply to a comment 
 
-## Learning Laravel
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/0621fadb-7230-460f-a91c-5f66fdb30d25)
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/3bc326cb-4390-4177-bf0f-52eeba391bb0)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+the user can click through a category and view all posts in it :
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/a0eb3172-9d28-4475-89f8-c1abd98bf45c)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+the user can search posts :
 
-## Laravel Sponsors
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/3db61a61-67d5-4395-9f1c-9e6e5855f9c8)
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/e6d79d69-00d3-4be3-a669-f039eee9961a)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+see recent comments on the platform and click through it to see the related post :
 
-### Premium Partners
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/ec45b5fa-28ac-49b6-9a56-b2cfde0428ed)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+the user can create a post :
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/95312b2d-0259-457b-8200-b8625f4caf29)
 
-## Contributing
+the user receives a notification when someone comment on his post :
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/e67d1d4d-b18d-418b-9f18-ba55eb4f6d75)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+the admin can see the statistics of the website :
 
-## Code of Conduct
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/8fd80ea3-f72d-4fb6-81d2-29211bf42c9c)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+the admin can add/delete a category :
 
-## Security Vulnerabilities
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/80b279c2-7ae7-4be9-8ffe-8be08df2ddca)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+the admin can add/delete/edit a user :
 
-## License
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/dd51b9bd-5943-44a4-a4b5-1a1b6e5c2a9a)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+the admin can add/delete/edit a post :
+
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/6040e761-e19c-4e55-b551-b0b22281fc26)
+
+the admin can add/delete roles for users :
+
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/97b030e4-4139-4622-9c87-69bdb6a89722)
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/f628fc95-8670-4b20-b6d5-196bfb2849db)
+
+the admin can define what capabilities each role can have :
+
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/c1862411-74ec-4043-b2e5-64dc90a79823)
+
+the admin can add/delete/edit a page :
+
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/5486c25c-ee02-4fae-b660-4ae0b6132e53)
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/16fd3875-1c8b-4ca5-b6e9-fbf4e8b7ca97)
+
+
