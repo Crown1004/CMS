@@ -1,6 +1,8 @@
 ## Content Mangment System (cms)
 a feature-rich cms platform with strong adminisiration capabalites 
 
+you can find an installation guide bellow
+
 ## Screenshots
 
 home page : 
@@ -64,4 +66,14 @@ the admin can add/delete/edit a page :
 ![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/5486c25c-ee02-4fae-b660-4ae0b6132e53)
 ![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/16fd3875-1c8b-4ca5-b6e9-fbf4e8b7ca97)
 
+## installation
 
+<ul>
+<li><code>git clone https://github.com/AHMED-GAMAL-AG/Content-Management-System.git</code></li>
+<li><code>Create a .env file and configure the database.</code></li>
+<li><code>composer install</code></li>
+<li><code>npm install</code></li>
+<li><code>php artisan key:generate</code></li>
+<li><code>php artisan migrate --seed</code></li>
+<li><code>php artisan storage:link</code></li>
+</ul>
