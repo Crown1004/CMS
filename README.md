@@ -36,6 +36,12 @@ the user receives a notification when someone comment on his post :
 
 ![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/e67d1d4d-b18d-418b-9f18-ba55eb4f6d75)
 
+the user can update his information, change password, activate two-factor authentication ,manage sessions on other browsers, delete the account from the edit account page :
+
+![image](https://github.com/AHMED-GAMAL-AG/instagram_demo/assets/76778937/3bbaaa81-e376-419b-ac48-c30c83c27e87)
+![image](https://github.com/AHMED-GAMAL-AG/instagram_demo/assets/76778937/bebbbd92-4deb-47b7-ad1f-f7d1cfe41792)
+![image](https://github.com/AHMED-GAMAL-AG/instagram_demo/assets/76778937/0a1efacf-50a4-4c82-98d8-e436af08c4e4)
+
 the admin can see the statistics of the website :
 
 ![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/8fd80ea3-f72d-4fb6-81d2-29211bf42c9c)
