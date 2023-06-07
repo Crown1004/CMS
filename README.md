@@ -38,7 +38,7 @@ the user receives a notification when someone comment on his post :
 
 the user can update his information, change password, activate two-factor authentication ,manage sessions on other browsers, delete the account from the edit account page :
 
-![image](https://github.com/AHMED-GAMAL-AG/instagram_demo/assets/76778937/3bbaaa81-e376-419b-ac48-c30c83c27e87)
+![image](https://github.com/AHMED-GAMAL-AG/Content-Management-System/assets/76778937/6b1cdd8f-aa52-4178-83ee-32d11d45b540)
 ![image](https://github.com/AHMED-GAMAL-AG/instagram_demo/assets/76778937/bebbbd92-4deb-47b7-ad1f-f7d1cfe41792)
 ![image](https://github.com/AHMED-GAMAL-AG/instagram_demo/assets/76778937/0a1efacf-50a4-4c82-98d8-e436af08c4e4)
 
