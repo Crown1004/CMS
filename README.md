@@ -1,5 +1,5 @@
-## Content Mangment System (cms)
-a feature-rich cms platform with strong adminisiration capabalites 
+## Content Management System (cms)
+a feature-rich cms platform with strong administration capabilities.
 
 you can find an installation guide bellow
 
